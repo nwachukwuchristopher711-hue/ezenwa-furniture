@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<meta name="supported-color-schemes" content="light">
+<title>Michael Ezenwa Furnitures</title>
+<meta name="description" content="Quality, comfort and style. Beautiful furniture for every space. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:only light;
+  --navy:#0a2342;--navy2:#0d2c52;--gold:#f5b400;--green:#18b95a;--teal:#0b5a4f;
+  --ink:#10284a;--muted:#6b7a90;--line:#e6ebf2;--bg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{overflow-x:hidden;font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-text-size-adjust:100%}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+
+/* header */
+header{background:var(--navy);position:sticky;top:0;z-index:50;border-bottom:3px solid var(--gold)}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand svg{width:56px;height:56px;flex:none}
+.brand b{display:block;color:#fff;font-size:20px;font-weight:600;letter-spacing:.5px;line-height:1.1}
+.brand span{display:block;color:var(--gold);font-weight:700;font-size:17px;letter-spacing:6px;margin-top:3px}
+.hicons{display:flex;align-items:center;gap:22px;color:#fff}
+.hicons button{background:none;border:0;color:#fff;position:relative;display:grid;place-items:center}
+.hicons svg{width:30px;height:30px}
+.badge{position:absolute;top:-8px;right:-10px;background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;width:20px;height:20px;border-radius:50%;display:grid;place-items:center}
+nav.desk{display:none;gap:26px;color:#dbe6f5;font-size:15px;margin-right:10px}
+nav.desk a:hover{color:var(--gold)}
+.searchrow{display:none;background:var(--navy2);padding:10px 0}
+.searchrow.open{display:block}
+.searchrow input{width:100%;padding:12px 16px;border-radius:10px;border:0;font:inherit;font-size:15px}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:80;display:none}
+.drawer.open{display:block}
+.drawer .panel{position:absolute;top:0;right:0;bottom:0;width:min(86%,360px);background:var(--navy);color:#fff;padding:24px;display:flex;flex-direction:column;gap:6px}
+.drawer .panel a{padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.1);font-size:17px}
+.drawer .panel a:hover{color:var(--gold)}
+
+/* hero */
+.hero{position:relative;background:#2a1f17 url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1400&q=70') center/cover;color:#fff;min-height:265px;display:flex;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,22,36,.92) 0%,rgba(14,22,36,.78) 45%,rgba(14,22,36,.15) 100%)}
+.hero .wrap{position:relative;padding-top:30px;padding-bottom:30px}
+.tag{font-size:12px;letter-spacing:3.5px;color:#e6edf7;font-weight:500}
+.tag i{color:var(--gold);font-style:normal;margin:0 6px}
+.hero h1{font-size:clamp(30px,6.4vw,50px);line-height:1.12;margin:8px 0 14px;font-weight:700;max-width:540px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{max-width:340px;font-size:14px;line-height:1.35;margin-bottom:18px;color:#f2f5fa}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{border-radius:12px;padding:12px 22px;font-weight:600;font-size:15px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.ghost{background:rgba(0,0,0,.25);border-color:rgba(255,255,255,.6);color:#fff}
+.btn.green{background:var(--green);color:#fff}
+
+/* sections */
+section{padding:26px 0 8px}
+.sh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.sh h2{font-size:26px;font-weight:600;color:var(--ink);line-height:1.2}
+.sh p{color:var(--muted);font-size:14px;margin-top:2px}
+.sh a{color:var(--gold);font-weight:600;font-size:14px;margin-top:8px;white-space:nowrap;cursor:pointer;filter:brightness(.92)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat{background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(16,40,74,.1);overflow:hidden;cursor:pointer;border:0;text-align:left;width:100%}
+.cat .im{aspect-ratio:2/1;background:#eef1f6;overflow:hidden}
+.cat img,.card img{width:100%;height:100%;object-fit:cover}
+.cat .lb{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:13px;font-weight:600;color:var(--ink)}
+.cat .lb svg{width:16px;height:16px;flex:none}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(16,40,74,.12);overflow:hidden;display:flex;flex-direction:column}
+.card .im{aspect-ratio:1/0.82;background:#eef1f6;overflow:hidden;position:relative}
+.card .bd{padding:10px 10px 12px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:13px;font-weight:600}
+.card .ds{font-size:11.5px;color:var(--muted);line-height:1.3;margin:3px 0 6px;flex:1}
+.card .pr{font-weight:700;color:var(--green);font-size:16px;margin-bottom:8px;filter:brightness(.8)}
+.wa{width:100%;border:1.5px solid var(--green);background:#fff;color:var(--green);border-radius:8px;padding:8px 4px;font-weight:600;font-size:12px;display:flex;gap:6px;align-items:center;justify-content:center;filter:brightness(.9)}
+.wa svg{width:18px;height:18px;flex:none}
+.wa:hover{background:var(--green);color:#fff}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:34px 10px;font-size:15px;background:#f6f8fb;border-radius:10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:13px;font-weight:500;color:var(--ink)}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* about */
+.about{background:#f7f9fc;margin-top:26px;padding:0}
+.about .row{display:grid;grid-template-columns:1fr;}
+.about .ph{min-height:200px;background:#cbb89e url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=70') center/cover}
+.about .tx{padding:22px 18px}
+.about small{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:11px;filter:brightness(.9)}
+.about h2{font-size:24px;margin:2px 0 8px;font-weight:600}
+.about p{font-size:13.5px;line-height:1.5;color:#33496a;margin-bottom:16px}
+.feat{display:flex;gap:26px;flex-wrap:wrap}
+.feat div{display:flex;align-items:center;gap:10px}
+.feat .ic{width:40px;height:40px;border-radius:50%;background:var(--gold);display:grid;place-items:center;flex:none}
+.feat .ic svg{width:20px;height:20px;color:var(--navy)}
+.feat b{display:block;font-size:12.5px}.feat span{font-size:11.5px;color:var(--muted)}
+
+/* wa banner + footer */
+.wabar{background:var(--teal);color:#fff}
+.wabar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.wabar .l{display:flex;align-items:center;gap:12px;flex:1;min-width:200px}
+.wabar .l svg{width:38px;height:38px;color:var(--green);flex:none}
+.wabar b{display:block;font-size:14px;font-weight:600}.wabar span{font-size:11.5px;color:#cfe5df}
+footer{background:var(--navy);color:#dbe6f5;padding:22px 0 14px}
+.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1.3fr .8fr;gap:14px;font-size:12px}
+.fgrid h4{color:#fff;font-size:12px;font-weight:600;margin-bottom:8px}
+.fgrid a,.fgrid p{display:block;line-height:1.55;color:#c7d6ea}
+.fgrid a:hover{color:var(--gold)}
+.fbrand .brand svg{width:44px;height:44px}.fbrand .brand b{font-size:14px}.fbrand .brand span{font-size:12px;letter-spacing:5px}
+.fbrand p{margin-top:8px;font-size:12px}
+.soc{display:flex;gap:10px}
+.soc a{width:26px;height:26px;border-radius:50%;background:#1b4b8a;display:grid;place-items:center}
+.soc svg{width:14px;height:14px;color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:14px;padding-top:12px;text-align:center;font-size:11.5px;color:#9db0cb}
+.copy a{color:#9db0cb;text-decoration:underline;margin-left:10px;cursor:pointer;background:none;border:0;font-size:11.5px}
+
+/* modal / admin */
+.modal{position:fixed;inset:0;background:rgba(10,35,66,.6);z-index:100;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}
+.modal.open{display:flex}
+.box{background:#fff;border-radius:14px;width:100%;max-width:640px;margin:auto;padding:20px}
+.box h3{font-size:20px;margin-bottom:12px}
+.box .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.x{background:#eef1f6;border:0;border-radius:50%;width:34px;height:34px;font-size:18px}
+label{display:block;font-size:12.5px;font-weight:600;margin:10px 0 4px}
+input[type=text],input[type=number],input[type=password],input[type=tel],textarea,select{width:100%;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;font:inherit;font-size:14px;background:#fff}
+textarea{resize:vertical;min-height:70px}
+.tabs{display:flex;gap:6px;border-bottom:2px solid var(--line);margin-bottom:12px;overflow:auto}
+.tabs button{background:none;border:0;padding:10px 14px;font-weight:600;font-size:14px;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tabs button.on{color:var(--navy);border-color:var(--gold)}
+.arow{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.arow img{width:56px;height:46px;object-fit:cover;border-radius:7px;background:#eef1f6;flex:none}
+.arow .t{flex:1;min-width:0}.arow .t b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arow .t span{font-size:12px;color:var(--muted)}
+.sm{border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600}
+.sm.del{color:#c0392b;border-color:#f0c4be}
+.pri{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:600;font-size:14px}
+.pri.full{width:100%;margin-top:14px}
+.hint{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+.prev{width:100%;max-height:170px;object-fit:cover;border-radius:10px;margin-top:8px;background:#eef1f6}
+.cartline{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-weight:700}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 18px;border-radius:99px;font-size:13.5px;opacity:0;pointer-events:none;transition:.25s;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.adminbar{background:var(--gold);color:var(--navy);font-size:13px;font-weight:600;padding:8px 0;display:none}
+.adminbar.on{display:block}
+.adminbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.adminbar button{background:var(--navy);color:#fff;border:0;border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:600}
+
+@media(min-width:800px){
+  nav.desk{display:flex}
+  .menu-btn{display:none!important}
+  .grid.cats{grid-template-columns:repeat(6,1fr)}
+  .grid.prods{grid-template-columns:repeat(4,1fr)}
+  .about .row{grid-template-columns:1fr 1fr}
+  .hero{min-height:380px}
+}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="adminbar" id="adminbar"><div class="wrap"><span>Admin mode is on</span><span><button onclick="openAdmin()">Manage website</button> <button onclick="logout()">Log out</button></span></div></div>
+
+<header>
+  <div class="wrap hbar">
+    <div class="brand" onclick="goHome()" role="button" tabindex="0" aria-label="Home">
+      <svg viewBox="0 0 64 64" fill="none" stroke="#f5a000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32 32 8l26 24"/><path d="M13 28v26h38V28"/><rect x="21" y="30" width="22" height="9" rx="3" fill="#f5a000" stroke="none"/><path d="M18 39v9h28v-9M22 48v4M42 48v4"/></svg>
+      <div><b id="n1"></b><span id="n2"></span></div>
+    </div>
+    <nav class="desk"><a href="#" onclick="goHome();return false">Home</a><a href="#categories">Categories</a><a href="#products">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <div class="hicons">
+      <button onclick="toggleSearch()" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+      <button onclick="openWA('Hello, I would like to place an order.')" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.8-.1 1.4Z"/></svg><span id="cartCount" style="display:none">0</span></button>
+      <button class="menu-btn" onclick="toggleMenu(true)" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+  <div class="searchrow" id="searchrow"><div class="wrap"><input id="q" type="text" placeholder="Search furniture..." oninput="state.q=this.value;renderProducts();if(this.value)document.getElementById('products').scrollIntoView()"></div></div>
+</header>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)toggleMenu(false)">
+  <div class="panel">
+    <div style="text-align:right"><button class="x" onclick="toggleMenu(false)">✕</button></div>
+    <a href="#" onclick="goHome();toggleMenu(false);return false">Home</a>
+    <a href="#categories" onclick="toggleMenu(false)">Categories</a>
+    <a href="#products" onclick="toggleMenu(false)">Shop</a>
+    <a href="#about" onclick="toggleMenu(false)">About Us</a>
+    <a href="#contact" onclick="toggleMenu(false)">Contact</a>
+  </div>
+</div>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div class="tag" id="heroTag"></div>
+    <h1 id="heroTitle"></h1>
+    <p id="heroText"></p>
+    <div class="btns">
+      <a class="btn gold" href="#products">Shop Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="#contact" onclick="return openWA('Hello, I want to make an enquiry.')">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<section id="categories"><div class="wrap">
+  <div class="sh"><div><h2>Shop by Category</h2><p>Find the perfect furniture for your space.</p></div><a onclick="setCat('all')">View All →</a></div>
+  <div class="grid cats" id="catGrid"></div>
+</div></section>
+
+<section id="products"><div class="wrap">
+  <div class="sh"><div><h2>Featured Products</h2><p id="prodSub">Our best selling and most popular items.</p></div><a onclick="setCat('all')">View All Products →</a></div>
+  <div class="chips" id="chips"></div>
+  <div class="grid prods" id="prodGrid"></div>
+</div></section>
+
+<section class="about" id="about"><div class="row">
+  <div class="ph" role="img" aria-label="Furniture showroom"></div>
+  <div class="tx">
+    <small>ABOUT US</small>
+    <h2 id="aboutTitle"></h2>
+    <p id="aboutText"></p>
+    <div class="feat">
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><p style="margin:0"><b>Quality Materials</b><span>Built to last</span></p></div>
+      <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg></span><p style="margin:0"><b>Affordable Prices</b><span>Great value for money</span></p></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<div class="wabar" id="contact"><div class="wrap">
+  <div class="l"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+    <p><b>Have a question or want to place an order?</b><span>Chat with us on WhatsApp for quick response.</span></p></div>
+  <a class="btn green" href="#" onclick="return openWA('Hello, I would like to place an order.')">Chat on WhatsApp</a>
+</div></div>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="brand" onclick="goHome()">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#f5a000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32 32 8l26 24"/><path d="M13 28v26h38V28"/><rect x="21" y="30" width="22" height="9" rx="3" fill="#f5a000" stroke="none"/><path d="M18 39v9h28v-9M22 48v4M42 48v4"/></svg>
+        <div><b id="fn1"></b><span id="fn2"></span></div>
+      </div>
+      <p>Your Comfort, Our Priority</p>
+    </div>
+    <div><h4>Quick Links</h4><a href="#" onclick="goHome();return false">Home</a><a href="#products">Shop</a><a href="#categories">Categories</a><a href="#about">About Us</a><a href="#contact">Contact</a></div>
+    <div><h4>Contact Info</h4><a id="phoneLink" href="#"></a><p>Nigeria</p><a href="#" onclick="return openWA('Hello!')">Chat on WhatsApp</a></div>
+    <div><h4>Follow Us</h4><div class="soc">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.5-3.2h-3.2V8.7c0-.9.4-1.7 1.8-1.7h1.5V4.2S15.5 4 14.3 4C11.8 4 10.2 5.500 10.2 8.200v2.600H7.500V14h2.700v8z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r="1" fill="currentColor"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.600 3c.3 2.300 1.600 3.700 3.900 3.900v3c-1.400.1-2.700-.3-3.900-1.100v6.200c0 5.500-6 7.200-8.800 3.300-1.800-2.600-.7-7 3.700-7.400v3.200c-.3.100-.7.200-1 .3-1 .3-1.500 1.100-1.300 2 .4 1.800 3.500 2.300 3.200-1.200V3z"/></svg></a>
+    </div></div>
+  </div>
+  <div class="copy">© <span id="yr"></span> <span id="copyName"></span>. All rights reserved. <button class="copy a" style="background:none;border:0;color:#9db0cb;text-decoration:underline;cursor:pointer;font-size:11.5px;margin-left:10px" onclick="adminLogin()">Admin</button></div>
+</div></footer>
+
+<!-- Cart modal -->
+<div class="modal" id="cartModal"><div class="box">
+  <div class="top"><h3>Your order list</h3><button class="x" onclick="closeM('cartModal')">✕</button></div>
+  <div id="cartBody"></div>
+</div></div>
+
+<!-- Login modal -->
+<div class="modal" id="loginModal"><div class="box" style="max-width:380px">
+  <div class="top"><h3>Admin login</h3><button class="x" onclick="closeM('loginModal')">✕</button></div>
+  <label for="em">Email</label>
+  <input type="text" id="em" autocomplete="username" inputmode="email" autocapitalize="off">
+  <label for="pw">Password</label>
+  <input type="password" id="pw" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+  <button class="pri full" onclick="doLogin()">Log in</button>
+</div></div>
+
+<!-- Admin modal -->
+<div class="modal" id="adminModal"><div class="box" style="max-width:720px">
+  <div class="top"><h3>Manage website</h3><button class="x" onclick="closeM('adminModal')">✕</button></div>
+  <div class="tabs" id="tabs">
+    <button data-t="products" class="on">Products</button>
+    <button data-t="cats">Categories</button>
+    <button data-t="site">Site details</button>
+    <button data-t="account">Account</button>
+  </div>
+  <div id="adminBody"></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+/* ============ DEFAULT DATA ============ */
+const U=(id)=>`https://images.unsplash.com/${id}?w=600&q=70`;
+const DEFAULT_SETTINGS={
+  name1:'MICHAEL EZENWA', name2:'FURNITURES',
+  phone:'08066939984',
+  heroTag:'QUALITY • COMFORT • STYLE',
+  heroTitle:'Beautiful Furniture for Every Space',
+  heroText:'At Michael Ezenwa Furnitures, we bring your dream spaces to life with high-quality, stylish and durable furniture for your home and office.',
+  aboutTitle:'Michael Ezenwa Furnitures',
+  aboutText:'We are a trusted furniture company in Nigeria, committed to providing high-quality, stylish and affordable furniture for homes and offices. Our goal is to help you create comfortable and beautiful spaces that match your taste and lifestyle.'
+};
+const DEFAULT_CATS=[
+  {name:'Sofas & Living Room',img:U('photo-1555041469-a586c61ea9bc')},
+  {name:'Beds & Bedroom',img:U('photo-1505693416388-ac5ce068fe85')},
+  {name:'Wardrobes',img:U('photo-1558997519-83ea9252edf8')},
+  {name:'Dining Tables & Chairs',img:U('photo-1617806118233-18e1de247200')},
+  {name:'Office Furniture',img:U('photo-1518455027359-f3f8164ba6bd')},
+  {name:'TV Stands & Cabinets',img:U('photo-1593359677879-a4bb92f829d1')}
+];
+
+let D={...DEFAULT_SETTINGS,cats:[],products:[]};
+const state={cat:'all',q:'',admin:false};
+const loaded={c:false,p:false};
+let cart=[];
+let db=null,auth=null,cloud=false;
+
+/* ============ FIREBASE ============ */
+function initFirebase(){
+  try{
+    if(typeof firebaseConfig==='undefined'||!firebaseConfig.apiKey||String(firebaseConfig.apiKey).includes('PASTE'))throw 0;
+    firebase.initializeApp(firebaseConfig);
+    db=firebase.firestore();auth=firebase.auth();cloud=true;
+  }catch(e){cloud=false}
+}
+function listen(){
+  db.collection('settings').doc('site').onSnapshot(s=>{if(s.exists)Object.assign(D,s.data());renderAll();softAdmin()},fail);
+  db.collection('categories').onSnapshot(q=>{
+    D.cats=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0));
+    loaded.c=true;renderAll();softAdmin();
+  },fail);
+  db.collection('products').onSnapshot(q=>{
+    D.products=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.ts||0)-(a.ts||0));
+    loaded.p=true;renderAll();softAdmin();
+  },fail);
+  auth.onAuthStateChanged(u=>{state.admin=!!u;$('adminbar').classList.toggle('on',!!u);if(u)seed()});
+}
+async function seed(){
+  try{
+    const ref=db.collection('settings').doc('site');
+    const s=await ref.get();
+    if(s.exists)return;
+    await ref.set(DEFAULT_SETTINGS);
+    const c=await db.collection('categories').limit(1).get();
+    if(c.empty){const b=db.batch();DEFAULT_CATS.forEach((x,i)=>b.set(db.collection('categories').doc(),{...x,order:i}));await b.commit()}
+  }catch(e){}
+}
+function fail(e){
+  console.error(e);
+  toast(e&&e.code==='permission-denied'?'Not allowed. Please log in again.':'Something went wrong. Check your internet and try again.');
+}
+function softAdmin(){if($('adminModal').classList.contains('open')&&editId===null)renderAdmin()}
+
+/* ============ HELPERS ============ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const naira=n=>'₦'+Number(n||0).toLocaleString('en-NG');
+const PH='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120"><rect width="200" height="120" fill="#e9eef5"/><path d="M50 78h100v14H50zM58 58h84v20H58z" fill="#c4cfde"/></svg>');
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)}
+function waNumber(){
+  let n=(D.phone||'').replace(/\D/g,'');
+  if(n.startsWith('234'))return n;
+  if(n.startsWith('00'))n=n.slice(2);
+  if(n.startsWith('0'))n=n.slice(1);
+  return '234'+n;
+}
+function openWA(text){window.open('https://wa.me/'+waNumber()+'?text='+encodeURIComponent(text),'_blank','noopener');return false}
+const img=(src)=>`<img src="${esc(src||PH)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${PH}'">`;
+const WAIC='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.600 15L2 22l5.200-1.400A10 10 0 1 0 12 2Zm5.200 14.200c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.400 0 .5l-.3.5-.4.5c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.4-.2.6-.1l1.800.9c.3.100.4.200.5.300.1.200.1.800-.1 1.400Z"/></svg>';
+const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const toTitle=s=>String(s).toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+
+function readImage(file,max=700){
+  return new Promise((res,rej)=>{
+    const fr=new FileReader();
+    fr.onerror=rej;
+    fr.onload=()=>{
+      const im=new Image();
+      im.onerror=rej;
+      im.onload=()=>{
+        const r=Math.min(1,max/Math.max(im.width,im.height));
+        const c=document.createElement('canvas');
+        c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);
+        c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+        res(c.toDataURL('image/jpeg',.72));
+      };
+      im.src=fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
+}
+
+/* ============ RENDER SITE ============ */
+function renderStatic(){
+  $('n1').textContent=D.name1;$('n2').textContent=D.name2;
+  $('fn1').textContent=D.name1;$('fn2').textContent=D.name2;
+  $('copyName').textContent=toTitle(D.name1)+' '+toTitle(D.name2);
+  document.title=toTitle(D.name1)+' '+toTitle(D.name2);
+  $('yr').textContent=new Date().getFullYear();
+  $('heroTag').innerHTML=esc(D.heroTag).replace(/•/g,'<i>•</i>');
+  const words=String(D.heroTitle).trim().split(' ');
+  const cut=Math.max(1,words.length-2);
+  $('heroTitle').innerHTML=esc(words.slice(0,cut).join(' '))+'<br><em>'+esc(words.slice(cut).join(' '))+'</em>';
+  $('heroText').textContent=D.heroText;
+  $('aboutTitle').textContent=D.aboutTitle;$('aboutText').textContent=D.aboutText;
+  const pl=$('phoneLink');pl.textContent='📞 '+D.phone;pl.href='tel:'+String(D.phone).replace(/\s/g,'');
+}
+function renderCats(){
+  if(cloud&&!loaded.c){$('catGrid').innerHTML='<div class="empty">Loading…</div>';return}
+  $('catGrid').innerHTML=D.cats.map(c=>`<button class="cat" onclick="setCat('${c.id}')"><div class="im">${img(c.img)}</div><div class="lb"><span>${esc(c.name)}</span>${ARROW}</div></button>`).join('')||'<div class="empty">No categories yet.</div>';
+}
+function renderChips(){
+  $('chips').innerHTML=[{id:'all',name:'All'},...D.cats].map(c=>`<button class="chip ${state.cat===c.id?'on':''}" onclick="setCat('${c.id}',true)">${esc(c.name)}</button>`).join('');
+}
+function renderProducts(){
+  renderChips();
+  if(cloud&&!loaded.p){$('prodGrid').innerHTML='<div class="empty">Loading products…</div>';return}
+  const q=state.q.trim().toLowerCase();
+  const list=D.products.filter(p=>(state.cat==='all'||p.cat===state.cat)&&(!q||((p.name||'')+' '+(p.desc||'')).toLowerCase().includes(q)));
+  $('prodSub').textContent=state.cat==='all'&&!q?'Our best selling and most popular items.':(q?`Results for "${state.q}"`:(D.cats.find(c=>c.id===state.cat)||{}).name||'');
+  $('prodGrid').innerHTML=list.length?list.map(p=>`
+    <article class="card"><div class="im">${img(p.img)}</div>
+      <div class="bd"><h3>${esc(p.name)}</h3><div class="ds">${esc(p.desc)}</div><div class="pr">${naira(p.price)}</div>
+      <button class="wa" onclick="orderNow('${p.id}')">${WAIC}Order Now</button></div></article>`).join('')
+    :'<div class="empty">No products here yet. Check back soon or chat with us on WhatsApp.</div>';
+}
+function renderAll(){renderStatic();renderCats();renderProducts();updateCart()}
+function setCat(id,stay){state.cat=id;state.q='';$('q').value='';renderProducts();if(!stay)$('products').scrollIntoView({behavior:'smooth'})}
+function goHome(){window.scrollTo({top:0,behavior:'smooth'})}
+function toggleSearch(){const r=$('searchrow');r.classList.toggle('open');if(r.classList.contains('open'))$('q').focus();else{state.q='';$('q').value='';renderProducts()}}
+function toggleMenu(o){$('drawer').classList.toggle('open',o)}
+function closeM(id){$(id).classList.remove('open')}
+
+/* ============ ORDER -> WHATSAPP ============ */
+function orderNow(id){
+  const p=D.products.find(x=>x.id===id);if(!p)return;
+  openWA(`Hello ${toTitle(D.name1)}, I want to order this item:\n\n*${p.name}*\nPrice: ${naira(p.price)}\n\nIs it still available?\n${location.origin+location.pathname}`);
+}
+/* (old order-list code below is no longer used) */
+function addCart(id){
+  const it=cart.find(c=>c.id===id);
+  if(it)it.qty++;else cart.push({id,qty:1});
+  updateCart();toast('Added to your order list');
+}
+function updateCart(){
+  if(!cloud||loaded.p)cart=cart.filter(c=>D.products.some(p=>p.id===c.id));
+  $('cartCount').textContent=cart.reduce((a,c)=>a+c.qty,0);
+}
+function openCart(){
+  const b=$('cartBody');
+  if(!cart.length){b.innerHTML='<div class="empty">Your order list is empty. Tap "Add to WhatsApp" on any product.</div>'}
+  else{
+    let total=0;
+    b.innerHTML=cart.map(c=>{const p=D.products.find(x=>x.id===c.id);total+=p.price*c.qty;
+      return `<div class="cartline"><div><b>${esc(p.name)}</b><br><span style="color:var(--muted);font-size:12.5px">${naira(p.price)}</span></div>
+      <div class="qty"><button onclick="qtyCart('${c.id}',-1)">−</button><b>${c.qty}</b><button onclick="qtyCart('${c.id}',1)">+</button></div></div>`}).join('')
+      +`<div class="cartline"><b>Total</b><b>${naira(total)}</b></div>
+      <button class="btn green" style="width:100%;justify-content:center;margin-top:14px" onclick="sendOrder()">${WAIC.replace('<svg','<svg width="20" height="20"')} Send order on WhatsApp</button>`;
+  }
+  $('cartModal').classList.add('open');
+}
+function qtyCart(id,d){const it=cart.find(c=>c.id===id);it.qty+=d;if(it.qty<=0)cart=cart.filter(c=>c!==it);updateCart();openCart()}
+function sendOrder(){
+  let total=0;
+  const lines=cart.map(c=>{const p=D.products.find(x=>x.id===c.id);total+=p.price*c.qty;return `• ${p.name} x${c.qty} - ${naira(p.price*c.qty)}`});
+  openWA(`Hello ${toTitle(D.name1)}, I would like to order:\n${lines.join('\n')}\n\nTotal: ${naira(total)}\n\nPlease confirm availability.`);
+}
+
+/* ============ ADMIN ============ */
+function adminLogin(){
+  if(!cloud)return toast('Online database is not connected yet. Check firebase-config.js');
+  if(state.admin)return openAdmin();
+  $('em').value='';$('pw').value='';$('loginModal').classList.add('open');setTimeout(()=>$('em').focus(),50);
+}
+function doLogin(){
+  const e=$('em').value.trim(),p=$('pw').value;
+  if(!e||!p)return toast('Enter your email and password');
+  auth.signInWithEmailAndPassword(e,p).then(()=>{closeM('loginModal');openAdmin();toast('Logged in')}).catch(()=>toast('Wrong email or password'));
+}
+function logout(){auth.signOut().then(()=>{closeM('adminModal');toast('Logged out')})}
+function resetPw(){
+  const e=auth.currentUser&&auth.currentUser.email;if(!e)return;
+  auth.sendPasswordResetEmail(e).then(()=>toast('Reset link sent to '+e)).catch(fail);
+}
+let tab='products',editId=null,pendingImg=null;
+function openAdmin(){$('adminModal').classList.add('open');renderAdmin()}
+$('tabs').addEventListener('click',e=>{const t=e.target.dataset.t;if(!t)return;tab=t;editId=null;pendingImg=null;[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));renderAdmin()});
+
+function catOptions(sel){return D.cats.map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${esc(c.name)}</option>`).join('')}
+
+function renderAdmin(){
+  const b=$('adminBody');
+  if(tab==='products'){
+    const p=editId?D.products.find(x=>x.id===editId):null;
+    if(editId!==null){
+      b.innerHTML=`<h3 style="font-size:17px">${p?'Edit product':'Add new product'}</h3>
+      <label>Product name</label><input type="text" id="f_name" value="${esc(p?.name)}" placeholder="e.g. 3-Seater Sofa">
+      <label>Price (₦)</label><input type="number" id="f_price" value="${p?.price??''}" placeholder="e.g. 150000" inputmode="numeric">
+      <label>Category</label><select id="f_cat">${catOptions(p?.cat)}</select>
+      <label>Short description</label><textarea id="f_desc" placeholder="Describe the item">${esc(p?.desc)}</textarea>
+      <label>Photo</label><input type="file" id="f_img" accept="image/*" onchange="pickImg(this,'prev')">
+      <img class="prev" id="prev" src="${esc(pendingImg||p?.img||PH)}" alt="">
+      <button class="pri full" id="saveBtn" onclick="saveProduct()">${p?'Save changes':'Add product'}</button>
+      <button class="sm" style="width:100%;margin-top:8px;padding:10px" onclick="editId=null;pendingImg=null;renderAdmin()">Cancel</button>`;
+    }else{
+      b.innerHTML=`<button class="pri full" style="margin:0 0 6px" onclick="editId='';pendingImg=null;renderAdmin()">+ Add new product</button>
+      ${D.products.map(x=>`<div class="arow"><img src="${esc(x.img||PH)}" onerror="this.src='${PH}'" alt=""><div class="t"><b>${esc(x.name)}</b><span>${naira(x.price)} · ${esc((D.cats.find(c=>c.id===x.cat)||{}).name||'No category')}</span></div>
+      <button class="sm" onclick="editId='${x.id}';renderAdmin()">Edit</button><button class="sm del" onclick="delProduct('${x.id}')">Sold / Delete</button></div>`).join('')||'<div class="empty">No products yet.</div>'}`;
+    }
+  }
+  if(tab==='cats'){
+    if(editId!==null){
+      const c=editId?D.cats.find(x=>x.id===editId):null;
+      b.innerHTML=`<h3 style="font-size:17px">${c?'Edit category':'Add category'}</h3>
+      <label>Category name</label><input type="text" id="c_name" value="${esc(c?.name)}">
+      <label>Photo</label><input type="file" accept="image/*" onchange="pickImg(this,'prev')">
+      <img class="prev" id="prev" src="${esc(pendingImg||c?.img||PH)}" alt="">
+      <button class="pri full" id="saveBtn" onclick="saveCat()">Save category</button>
+      <button class="sm" style="width:100%;margin-top:8px;padding:10px" onclick="editId=null;pendingImg=null;renderAdmin()">Cancel</button>`;
+    }else{
+      b.innerHTML=`<button class="pri full" style="margin:0 0 6px" onclick="editId='';pendingImg=null;renderAdmin()">+ Add category</button>
+      ${D.cats.map(c=>`<div class="arow"><img src="${esc(c.img||PH)}" onerror="this.src='${PH}'" alt=""><div class="t"><b>${esc(c.name)}</b></div>
+      <button class="sm" onclick="editId='${c.id}';renderAdmin()">Edit</button><button class="sm del" onclick="delCat('${c.id}')">Delete</button></div>`).join('')}`;
+    }
+  }
+  if(tab==='site'){
+    b.innerHTML=`
+    <label>Business name (line 1)</label><input type="text" id="s_n1" value="${esc(D.name1)}">
+    <label>Business name (line 2)</label><input type="text" id="s_n2" value="${esc(D.name2)}">
+    <label>WhatsApp / phone number</label><input type="tel" id="s_phone" value="${esc(D.phone)}">
+    <p class="hint">Orders go to this WhatsApp number. Example: 08066939984</p>
+    <label>Top headline</label><input type="text" id="s_ht" value="${esc(D.heroTitle)}">
+    <label>Small line above headline</label><input type="text" id="s_tag" value="${esc(D.heroTag)}">
+    <label>Headline text</label><textarea id="s_htx">${esc(D.heroText)}</textarea>
+    <label>About title</label><input type="text" id="s_at" value="${esc(D.aboutTitle)}">
+    <label>About text</label><textarea id="s_atx">${esc(D.aboutText)}</textarea>
+    <button class="pri full" onclick="saveSite()">Save changes</button>`;
+  }
+  if(tab==='account'){
+    b.innerHTML=`<p class="hint" style="font-size:13px">Logged in as <b>${esc(auth.currentUser?.email||'')}</b></p>
+    <p class="hint" style="font-size:13px;margin-top:10px">Your changes are saved online and show on every phone straight away.</p>
+    <button class="pri full" onclick="resetPw()">Send password reset email</button>
+    <button class="sm" style="width:100%;margin-top:10px;padding:11px" onclick="logout()">Log out</button>`;
+  }
+}
+async function pickImg(inp,pid){
+  if(!inp.files[0])return;
+  try{
+    const d=await readImage(inp.files[0]);
+    if(d.length>900000){pendingImg=null;return toast('That photo is too large. Try a smaller photo.')}
+    pendingImg=d;$(pid).src=d;
+  }catch(e){toast('Could not read that photo')}
+}
+function busy(on){const b=$('saveBtn');if(b){b.disabled=on;b.style.opacity=on?.6:1;if(on)b.textContent='Saving…'}}
+async function saveProduct(){
+  const name=$('f_name').value.trim(),price=parseFloat($('f_price').value);
+  if(!name)return toast('Enter the product name');
+  if(!(price>=0))return toast('Enter the price');
+  if(!D.cats.length)return toast('Add a category first');
+  const data={name,price,cat:$('f_cat').value,desc:$('f_desc').value.trim()};
+  busy(true);
+  try{
+    if(editId){if(pendingImg)data.img=pendingImg;await db.collection('products').doc(editId).update(data)}
+    else await db.collection('products').add({...data,img:pendingImg||'',ts:Date.now()});
+    editId=null;pendingImg=null;renderAdmin();toast('Product saved');
+  }catch(e){busy(false);fail(e)}
+}
+async function delProduct(id){
+  const p=D.products.find(x=>x.id===id);
+  if(!confirm(`Remove "${p.name}" from the website? Do this when the item is sold.`))return;
+  try{await db.collection('products').doc(id).delete();toast('Product removed')}catch(e){fail(e)}
+}
+async function saveCat(){
+  const name=$('c_name').value.trim();if(!name)return toast('Enter the category name');
+  busy(true);
+  try{
+    if(editId){const d={name};if(pendingImg)d.img=pendingImg;await db.collection('categories').doc(editId).update(d)}
+    else await db.collection('categories').add({name,img:pendingImg||'',order:Date.now()});
+    editId=null;pendingImg=null;renderAdmin();toast('Category saved');
+  }catch(e){busy(false);fail(e)}
+}
+async function delCat(id){
+  const items=D.products.filter(p=>p.cat===id);
+  if(!confirm(items.length?`This category has ${items.length} product(s). They will also be removed. Continue?`:'Delete this category?'))return;
+  try{
+    const b=db.batch();
+    items.forEach(p=>b.delete(db.collection('products').doc(p.id)));
+    b.delete(db.collection('categories').doc(id));
+    await b.commit();
+    if(state.cat===id)state.cat='all';
+    toast('Category deleted');
+  }catch(e){fail(e)}
+}
+async function saveSite(){
+  const d={name1:$('s_n1').value.trim()||D.name1,name2:$('s_n2').value.trim()||D.name2,phone:$('s_phone').value.trim()||D.phone,
+    heroTitle:$('s_ht').value.trim()||D.heroTitle,heroTag:$('s_tag').value.trim(),heroText:$('s_htx').value.trim(),
+    aboutTitle:$('s_at').value.trim(),aboutText:$('s_atx').value.trim()};
+  try{await db.collection('settings').doc('site').set(d,{merge:true});toast('Website updated')}catch(e){fail(e)}
+}
+
+/* ============ START ============ */
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'))});
+initFirebase();
+if(cloud){listen()}
+else{ // Not connected yet: show a sample preview
+  D.cats=DEFAULT_CATS.map((c,i)=>({...c,id:'c'+i}));
+  D.products=[
+    {id:'p1',name:'L-Shaped Sofa',desc:'Modern and comfortable L-shaped sofa for your living room.',price:350000,cat:'c0',img:U('photo-1493663284031-b7e3aefcae8e')},
+    {id:'p2',name:'Queen Size Bed',desc:'Elegant and durable queen size bed with strong frame.',price:280000,cat:'c1',img:U('photo-1505693416388-ac5ce068fe85')},
+    {id:'p3',name:'3 Door Wardrobe',desc:'Spacious wardrobe with modern design.',price:220000,cat:'c2',img:U('photo-1558997519-83ea9252edf8')}
+  ];
+}
+if(location.hash==='#admin')setTimeout(adminLogin,500);
+renderAll();
+</script>
+
+</body>
+</html>
